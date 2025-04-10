@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'Map', href: '#' },
-    { name: 'Alerts', href: '#' },
-    { name: 'Our Work', href: '#' },
-    { name: 'About Us', href: '#' },
-    { name: 'Take Action', href: '#' },
-    { name: 'News', href: '#' }
+    { name: 'Map', href: '/map' },
+    { name: 'Alerts', href: '/alerts' },
+    { name: 'Our Work', href: '/our-work' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Take Action', href: '/take-action' },
+    { name: 'News', href: '/news' }
   ];
 
   return (
@@ -18,20 +19,20 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <span className="text-2xl font-bold text-green-800">IntelGreen</span>
+            <Link to="/" className="text-2xl font-bold text-green-800">InteliGreen</Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="text-gray-700 hover:text-green-800 px-3 py-2 text-sm font-medium transition-colors duration-200 relative group"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-800 group-hover:w-full transition-all duration-200"></span>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -84,13 +85,13 @@ const Navbar = () => {
       <div className={`${isOpen ? 'block' : 'hidden'} md:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.name}
-              href={item.href}
+              to={item.href}
               className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-green-800 hover:bg-gray-50 transition-colors duration-200"
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -98,4 +99,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;
