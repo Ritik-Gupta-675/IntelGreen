@@ -10,7 +10,8 @@ const Navbar = () => {
     { name: 'Our Work', href: '/our-work' },
     { name: 'About Us', href: '/about' },
     { name: 'Take Action', href: '/take-action' },
-    { name: 'News', href: '/news' }
+    { name: 'News', href: '/news' },
+    { name: 'Blog', href: '/blog' }
   ];
 
   return (
@@ -19,7 +20,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="text-2xl font-bold text-green-800">InteliGreen</Link>
+            <Link to="/" className="text-2xl font-bold text-green-800 hover:text-green-600">InteliGreen</Link>
           </div>
 
           {/* Desktop Navigation */}
