@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
+import Hero2 from './components/Hero2';
 import MapPlaceholder from './components/MapPlaceholder';
-import AlertFeed from './components/AlertFeed';
 import Stats from './components/Stats';
 import Footer from './components/Footer';
 
@@ -31,7 +31,7 @@ function App() {
               <Hero />
               <HowItWorks />
               <MapPlaceholder />
-              <AlertFeed />
+              <Hero2 />
               <Stats />
             </>
           } />

@@ -4,18 +4,15 @@ const HowItWorks = () => {
   const stages = [
     {
       title: "Satellite Monitoring",
-      description: "Wide-scale surveillance for deforestation detection using satellite imagery and AI-powered change detection.",
-      icon: "🛰️"
+      description: "Wide-scale surveillance for deforestation detection using satellite imagery and AI-powered change detection."
     },
     {
       title: "Drone-Based Surveillance",
-      description: "Autonomous drones with thermal cameras detect and deter poaching activities in real-time.",
-      icon: "🚁"
+      description: "Autonomous drones with thermal cameras detect and deter poaching activities in real-time."
     },
     {
       title: "Sound + Heat Detection",
-      description: "Advanced threat detection using audio AI and thermal sensors to identify illegal activities.",
-      icon: "🔊"
+      description: "Advanced threat detection using audio AI and thermal sensors to identify illegal activities."
     }
   ];
 
@@ -29,10 +26,9 @@ const HowItWorks = () => {
           {stages.map((stage, index) => (
             <div 
               key={index}
-              className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out"
             >
-              <div className="text-5xl mb-4">{stage.icon}</div>
-              <h3 className="text-2xl font-semibold text-green-800 mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 {stage.title}
               </h3>
               <p className="text-gray-600">
@@ -46,4 +42,4 @@ const HowItWorks = () => {
   );
 };
 
-export default HowItWorks; 
+export default HowItWorks;

@@ -1,27 +1,22 @@
 import React from 'react';
+import MapPage from '../pages/map';
 
-const MapPlaceholder = () => {
+const Map = () => {
   return (
-    <section className="py-20 bg-white">
+    <div className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center text-green-900 mb-8">
           InteliGreen Global Threat Map
         </h2>
         <p className="text-center text-gray-600 mb-12">
-          Live Map Coming Soon – Powered by Global Forest Intelligence
+          Live Map – Powered by Global Forest Intelligence
         </p>
-        <div 
-          className="w-full h-[600px] bg-gray-100 rounded-lg shadow-lg flex items-center justify-center"
-          id="map-placeholder"
-        >
-          <div className="text-center">
-            <div className="text-6xl mb-4">🌍</div>
-            <p className="text-gray-500">Interactive Map Loading...</p>
-          </div>
+        <div className="w-full">
+          <MapPage />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default MapPlaceholder; 
+export default Map;

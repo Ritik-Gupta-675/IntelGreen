@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -21,12 +22,12 @@ const Hero = () => {
           Intelligent Surveillance for Earth's Lungs
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
-          <button className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-300">
+          <Link to="/map" className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-300 inline-block">
             Launch Forest Map
-          </button>
-          <button className="px-8 py-3 bg-transparent border-2 border-white text-white hover:bg-white hover:text-green-900 rounded-lg transition-colors duration-300">
+          </Link>
+          <Link to="/alerts" className="px-8 py-3 bg-transparent border-2 border-white text-white hover:bg-white hover:text-green-900 rounded-lg transition-colors duration-300">
             See Live Alerts
-          </button>
+          </Link>
         </div>
       </div>
     </div>
