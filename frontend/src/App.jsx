@@ -14,7 +14,7 @@ import AlertsPage from './pages/alerts';
 import OurWorkPage from './pages/our-work';
 import AboutPage from './pages/about';
 import TakeActionPage from './pages/take-action';
-import NewsPage from './pages/news';
+import NewsPage from './pages/News/news';
 import BlogPage from './pages/Blog/blog';
 import BlogPost from './pages/Blog/blog-post';
 

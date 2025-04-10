@@ -7,11 +7,11 @@ const Navbar = () => {
   const navItems = [
     { name: 'Map', href: '/map' },
     { name: 'Alerts', href: '/alerts' },
-    { name: 'Our Work', href: '/our-work' },
-    { name: 'About Us', href: '/about' },
     { name: 'Take Action', href: '/take-action' },
     { name: 'News', href: '/news' },
-    { name: 'Blog', href: '/blog' }
+    { name: 'Blog', href: '/blog' },
+    { name: 'Our Work', href: '/our-work' },
+    { name: 'About Us', href: '/about' }
   ];
 
   return (
