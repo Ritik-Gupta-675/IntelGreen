@@ -4,47 +4,91 @@ import { motion } from 'framer-motion';
 const GuideMe = () => {
   const sections = [
     {
-      title: 'Introduction',
+      title: 'Welcome to IntelGreen Data Analytics',
       content: (
         <div>
           <p className="text-lg mb-4">
-            Welcome to IntelGreen, your powerful tool for real-time deforestation monitoring and unauthorized activity detection.
+            Welcome to IntelGreen's powerful data analytics platform! Our platform provides comprehensive environmental monitoring data to help you make informed decisions about deforestation, unauthorized activities, and environmental changes.
           </p>
-          <p className="text-gray-600">
-            This platform uses advanced AI-powered analytics to help you monitor and protect restricted zones effectively.
+          <p className="text-black">
+            This guide will help you understand how to access, analyze, and extract valuable insights from our data. Whether you're a beginner or an experienced analyst, you'll find valuable information here.
           </p>
         </div>
       )
     },
     {
-      title: 'How to Analyze the Map',
+      title: 'Understanding Our Data',
       content: (
         <div className="space-y-4">
           <p className="text-gray-600">
-            <strong>Map Visuals:</strong> The map displays different colors to indicate various conditions:
+            <strong>Data Types Available:</strong>
           </p>
           <ul className="list-disc pl-5 text-gray-600">
-            <li>Red areas: Active deforestation zones</li>
-            <li>Green areas: Safe zones</li>
-            <li>Yellow areas: Potential risk zones</li>
+            <li>Satellite Imagery Data</li>
+            <li>Thermal Imaging Data</li>
+            <li>Environmental Sensor Data</li>
+            <li>Historical Activity Records</li>
+            <li>Real-time Monitoring Data</li>
           </ul>
           <p className="text-gray-600">
-            <strong>Navigation Tips:</strong> Use the zoom controls and drag the map to explore different areas.
+            <strong>Key Data Attributes:</strong>
           </p>
+          <ul className="list-disc pl-5 text-gray-600">
+            <li>Location Coordinates (Latitude/Longitude)</li>
+            <li>Time Stamps</li>
+            <li>Environmental Metrics (Temperature, Humidity)</li>
+            <li>Activity Detection Scores</li>
+            <li>Image Quality Metrics</li>
+          </ul>
         </div>
       )
     },
     {
-      title: 'Detecting Unauthorized Entries',
+      title: 'Accessing the Data',
       content: (
         <div className="space-y-4">
           <p className="text-gray-600">
-            The system uses advanced sensors and thermal cameras to detect unauthorized human presence in restricted zones.
+            <strong>How to Navigate:</strong>
+          </p>
+          <ol className="list-decimal pl-5 text-gray-600">
+            <li>Click on the "Data" tab in the main navigation</li>
+            <li>Select your desired data type from the dropdown menu</li>
+            <li>Use the date range selector to filter the data</li>
+            <li>Apply additional filters as needed (location, activity type, etc.)</li>
+          </ol>
+          <p className="text-gray-600 mt-4">
+            <strong>Download Options:</strong>
           </p>
           <ul className="list-disc pl-5 text-gray-600">
-            <li>Real-time alerts for detected intrusions</li>
-            <li>Image capture with coordinates</li>
-            <li>Immediate notification system</li>
+            <li>CSV format for spreadsheet analysis</li>
+            <li>JSON format for programming integration</li>
+            <li>GeoJSON for geographic data visualization</li>
+            <li>Image data in various formats (JPEG, TIFF)</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      title: 'Analyzing the Data',
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-600">
+            <strong>Basic Analysis Tips:</strong>
+          </p>
+          <ul className="list-disc pl-5 text-gray-600">
+            <li>Use time series analysis to track changes over time</li>
+            <li>Apply spatial analysis to identify patterns in specific areas</li>
+            <li>Utilize statistical methods to identify anomalies</li>
+            <li>Create heatmaps to visualize activity density</li>
+          </ul>
+          <p className="text-gray-600 mt-4">
+            <strong>Advanced Analysis:</strong>
+          </p>
+          <ul className="list-disc pl-5 text-gray-600">
+            <li>Machine learning models for predictive analytics</li>
+            <li>Image processing for pattern recognition</li>
+            <li>Geospatial analysis for environmental impact assessment</li>
+            <li>Time-series forecasting for trend prediction</li>
           </ul>
         </div>
       )
@@ -57,39 +101,59 @@ const GuideMe = () => {
             Our platform uses multiple imaging technologies to provide comprehensive monitoring:
           </p>
           <ul className="list-disc pl-5 text-gray-600">
-            <li>Satellite Images: High-resolution overview of large areas</li>
-            <li>Drone Captures: Detailed ground-level views</li>
-            <li>Thermal Images: Detection of heat signatures and movement</li>
+            <li>Import CSV data using Power Query</li>
+            <li>Create pivot tables for data analysis</li>
+            <li>Use Power BI for advanced visualization</li>
           </ul>
         </div>
       )
     },
     {
-      title: 'Alert System Guide',
+      title: 'Suggested Use Cases',
       content: (
         <div className="space-y-4">
           <p className="text-gray-600">
-            <strong>Alert Features:</strong>
+            <strong>Common Questions to Explore:</strong>
           </p>
           <ul className="list-disc pl-5 text-gray-600">
-            <li>Real-time notifications for critical events</li>
-            <li>Alert history and timeline</li>
-            <li>Customizable alert preferences</li>
+            <li>What areas are experiencing the highest deforestation rates?</li>
+            <li>When do unauthorized activities typically occur?</li>
+            <li>How does environmental data correlate with activity patterns?</li>
+            <li>What are the seasonal patterns in activity detection?</li>
+          </ul>
+          <p className="text-gray-600 mt-4">
+            <strong>Example Projects:</strong>
+          </p>
+          <ul className="list-disc pl-5 text-gray-600">
+            <li>Create heatmaps of activity hotspots</li>
+            <li>Develop predictive models for deforestation</li>
+            <li>Analyze temporal patterns of unauthorized activities</li>
+            <li>Conduct environmental impact assessments</li>
           </ul>
         </div>
       )
     },
     {
-      title: 'Additional Tips',
+      title: 'Need Help?',
       content: (
         <div className="space-y-4">
           <p className="text-gray-600">
+            <strong>Support Resources:</strong>
+          </p>
+          <ul className="list-disc pl-5 text-gray-600">
+            <li>Documentation: Check our comprehensive API documentation</li>
+            <li>Community: Join our user forum for peer support</li>
+            <li>Tutorials: Watch our video tutorials on data analysis</li>
+            <li>Contact: Reach out to our support team at support@inteligreen.com</li>
+          </ul>
+          <p className="text-gray-600 mt-4">
             <strong>Best Practices:</strong>
           </p>
           <ul className="list-disc pl-5 text-gray-600">
-            <li>Use a larger screen for better map navigation</li>
-            <li>Regularly check alert notifications</li>
-            <li>Keep your device updated for latest features</li>
+            <li>Start with small datasets for testing</li>
+            <li>Document your analysis process</li>
+            <li>Regularly update your data sources</li>
+            <li>Share your findings with the community</li>
           </ul>
         </div>
       )
@@ -99,7 +163,7 @@ const GuideMe = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-12">
+        <h1 className="text-4xl font-bold text-center mb-12 text-green-600">
           Guide Me: How to Use IntelGreen
         </h1>
 
