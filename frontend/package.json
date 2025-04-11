@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@firebase/firestore": "^4.7.10",
-    "@react-leaflet/core": "^3.0.0",
+    "@react-leaflet/core": "^2.1.0",
     "firebase": "^11.6.0",
     "framer-motion": "^12.6.3",
     "leaflet": "^1.9.4",

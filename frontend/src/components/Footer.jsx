@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className="bg-green-900 text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">InteliGreen</h3>
             <p className="text-green-200">
@@ -14,25 +15,17 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-green-200 hover:text-white transition-colors">Home</a></li>
-              <li><a href="#" className="text-green-200 hover:text-white transition-colors">Forest Map</a></li>
-              <li><a href="#" className="text-green-200 hover:text-white transition-colors">Live Alerts</a></li>
+              <li><Link to="/" className="text-green-200 hover:text-white transition-colors">Home</Link></li>
+              <li><Link to="/about" className="text-green-200 hover:text-white transition-colors">About</Link></li>
+              <li><Link to="/guide" className="text-green-200 hover:text-white transition-colors">Guide</Link></li>
+              <li><Link to="/blog" className="text-green-200 hover:text-white transition-colors">Blog</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-lg font-semibold mb-4">About</h4>
+            <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-green-200 hover:text-white transition-colors">Our Mission</a></li>
-              <li><a href="#" className="text-green-200 hover:text-white transition-colors">Technology</a></li>
-              <li><a href="#" className="text-green-200 hover:text-white transition-colors">Team</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Legal</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-green-200 hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-green-200 hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-green-200 hover:text-white transition-colors">Contact Us</a></li>
+              <li><a href="mailto:contact@inteligreen.com" className="text-green-200 hover:text-white transition-colors">Email Us</a></li>
+              <li><Link to="/about" className="text-green-200 hover:text-white transition-colors">Our Team</Link></li>
             </ul>
           </div>
         </div>
@@ -44,4 +37,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

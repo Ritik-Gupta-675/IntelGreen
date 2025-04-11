@@ -10,10 +10,7 @@ const HeroSection2 = () => {
       ></div>
 
       {/* Green gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-green-900 via-green-800 to-green-900 opacity-75"></div>
-      
-      {/* Black gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-green-900 via-green-800 to-green-900 opacity-80"></div>
       
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">

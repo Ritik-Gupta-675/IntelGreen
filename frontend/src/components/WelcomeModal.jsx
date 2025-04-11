@@ -58,7 +58,7 @@ const WelcomeModal = () => {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 text-center">
-          <div className="max-w-3xl w-full">
+          <div className="max-w-3xl w-full mt-7">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-200">
               Welcome to IntelGreen
             </h1>

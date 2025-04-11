@@ -94,21 +94,6 @@ const GuideMe = () => {
       )
     },
     {
-      title: 'Understanding the Images',
-      content: (
-        <div className="space-y-4">
-          <p className="text-gray-600">
-            Our platform uses multiple imaging technologies to provide comprehensive monitoring:
-          </p>
-          <ul className="list-disc pl-5 text-gray-600">
-            <li>Import CSV data using Power Query</li>
-            <li>Create pivot tables for data analysis</li>
-            <li>Use Power BI for advanced visualization</li>
-          </ul>
-        </div>
-      )
-    },
-    {
       title: 'Suggested Use Cases',
       content: (
         <div className="space-y-4">
@@ -129,31 +114,6 @@ const GuideMe = () => {
             <li>Develop predictive models for deforestation</li>
             <li>Analyze temporal patterns of unauthorized activities</li>
             <li>Conduct environmental impact assessments</li>
-          </ul>
-        </div>
-      )
-    },
-    {
-      title: 'Need Help?',
-      content: (
-        <div className="space-y-4">
-          <p className="text-gray-600">
-            <strong>Support Resources:</strong>
-          </p>
-          <ul className="list-disc pl-5 text-gray-600">
-            <li>Documentation: Check our comprehensive API documentation</li>
-            <li>Community: Join our user forum for peer support</li>
-            <li>Tutorials: Watch our video tutorials on data analysis</li>
-            <li>Contact: Reach out to our support team at support@inteligreen.com</li>
-          </ul>
-          <p className="text-gray-600 mt-4">
-            <strong>Best Practices:</strong>
-          </p>
-          <ul className="list-disc pl-5 text-gray-600">
-            <li>Start with small datasets for testing</li>
-            <li>Document your analysis process</li>
-            <li>Regularly update your data sources</li>
-            <li>Share your findings with the community</li>
           </ul>
         </div>
       )
