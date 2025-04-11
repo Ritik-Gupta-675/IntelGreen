@@ -34,7 +34,7 @@ const AlertsPage = () => {
     <div className="min-h-screen bg-white">
       <div className="container mx-auto px-4 py-12">
         <div className="flex justify-between items-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-800">Poaching Alert System</h1>
+          <h1 className="text-4xl font-bold text-gray-800">Alert System</h1>
           <Link to="/" className="text-red-600 hover:text-red-800 transition-all duration-300 ease-in-out">
             ← Back to Home
           </Link>
@@ -46,10 +46,8 @@ const AlertsPage = () => {
           <div className={`text-center p-10 ${
             alertsData.isIllegalDeforestation ? 'bg-red-100 border border-red-300' : 'bg-green-50 border border-green-300'
           } rounded-3xl`}>
-            <h3 className={`text-3xl font-bold mb-4 ${
-              alertsData.isIllegalDeforestation ? 'text-red-600' : 'text-green-600'
-            }`}>
-              {alertsData.isIllegalDeforestation ? 'Deforestation Detected!' : 'No Deforestation Detected'}
+            <h3 className={`text-3xl font-bold mb-4 text-red-600`}>
+              Multiple Deforestation Detected
             </h3>
             {alertsData.isIllegalDeforestation && alertsData.deforestationCoordinates && (
               <div className="mt-4">
