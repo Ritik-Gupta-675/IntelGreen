@@ -21,11 +21,29 @@ try:
 except Exception as e:
     print(f"Firebase initialization error: {str(e)}")
     raise
+import firebase_admin
+from firebase_admin import credentials, db
+import requests
+requests.packages.urllib3.disable_warnings()
+response = requests.get('https://oauth2.googleapis.com/token', verify=False)
+print("Starting server initialization...")
+
+# Initialize Firebase Admin SDK
+try:
+    cred = credentials.Certificate('serviceAccountKey.json')
+    firebase_admin.initialize_app(cred, {
+        'databaseURL': 'https://inteligreen-default-rtdb.firebaseio.com/'
+    })
+    print("Firebase initialized successfully")
+except Exception as e:
+    print(f"Firebase initialization error: {str(e)}")
+    raise
 
 app = Flask(__name__)
 
 # Initialize Classes
 tf_model = Model1('model.keras')
+yolo_model = Model2()
 yolo_model = Model2()
 
 # Load Models at Startup
@@ -34,10 +52,13 @@ yolo_model.load_model()
 
 print("Models loaded successfully")
 
+print("Models loaded successfully")
+
 @app.route('/')
 def home():
     return "Server Running with TensorFlow & YOLO!"
 
+@app.route('/tfpredict/')
 @app.route('/tfpredict/')
 def predict_tf():
     try:
@@ -57,6 +78,8 @@ def predict_tf():
         
         # Get prediction from model
         result = tf_model.generate_response(image_path)
+        print(f"Raw result: {result}")  # Debug log
+        
         print(f"Raw result: {result}")  # Debug log
         
         result_dict = json.loads(result)
@@ -81,7 +104,9 @@ def predict_tf():
         }
 
         print(f"Sending response: {response}")  # Debug log
+        print(f"Sending response: {response}")  # Debug log
         return jsonify(response)
+        
         
     except Exception as e:
         print(f"Error: {str(e)}")  # Debug log
@@ -92,12 +117,25 @@ def predict_tf():
                 'firebase_url': 'https://inteligreen.firebaseio.com'
             }
         }), 500
+        print(f"Error: {str(e)}")  # Debug log
+        return jsonify({
+            'error': str(e),
+            'debug': {
+                'image_path': os.path.abspath(image_path) if os.path.exists(image_path) else None,
+                'firebase_url': 'https://inteligreen.firebaseio.com'
+            }
+        }), 500
 
+@app.route('/predict/yolo')
 @app.route('/predict/yolo')
 def predict_yolo():
     try:
         # Use a local image
+        # Use a local image
         image_path = 'canopy_img.png'
+        
+        if not os.path.exists(image_path):
+            return jsonify({'error': 'Local image not found!'}), 404
         
         if not os.path.exists(image_path):
             return jsonify({'error': 'Local image not found!'}), 404
@@ -111,5 +149,7 @@ def predict_yolo():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == "__main__":
+    print("\nStarting Flask server...")
+    app.run(debug=True, host='0.0.0.0', port=5000, use_reloader=False)
     print("\nStarting Flask server...")
     app.run(debug=True, host='0.0.0.0', port=5000, use_reloader=False)
