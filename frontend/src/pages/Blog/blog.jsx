@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { db } from '../../config/firebase';
-import { collection, query, getDocs, addDoc } from 'firebase/firestore';
+import { rtdb } from '../../config/firebase';
+import { ref, get, set, onValue, push } from 'firebase/database';
 
 const BlogPage = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -9,26 +9,23 @@ const BlogPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchBlogPosts = async () => {
-      try {
-        const q = query(collection(db, "blogs"));
-        const querySnapshot = await getDocs(q);
-        const posts = [];
-        querySnapshot.forEach((doc) => {
-          posts.push({
-            id: doc.id,
-            ...doc.data()
-          });
+    const blogRef = ref(rtdb, 'blogs');
+    
+    // Real-time listener for blog posts
+    const unsubscribe = onValue(blogRef, (snapshot) => {
+      const posts = [];
+      snapshot.forEach((childSnapshot) => {
+        posts.push({
+          id: childSnapshot.key,
+          ...childSnapshot.val()
         });
-        setBlogPosts(posts);
-      } catch (error) {
-        console.error('Error fetching blog posts:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+      });
+      setBlogPosts(posts);
+      setLoading(false);
+    });
 
-    fetchBlogPosts();
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
   }, []);
 
   const handleAddBlog = () => {
