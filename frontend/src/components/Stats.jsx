@@ -10,19 +10,19 @@ const Stats = () => {
     },
     {
       title: "Deforestation Incidents Prevented",
-      value: "1,234",
+      value: "1",
       unit: "incidents",
       icon: "🛡️"
     },
     {
       title: "Active Drones",
-      value: "48",
+      value: "1",
       unit: "drones",
       icon: "🚁"
     },
     {
       title: "Alerts in Last 24h",
-      value: "156",
+      value: "1",
       unit: "alerts",
       icon: "🔔"
     }
