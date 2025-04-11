@@ -7,6 +7,7 @@ import Hero2 from './components/Hero2';
 import MapPlaceholder from './components/MapPlaceholder';
 import Stats from './components/Stats';
 import Footer from './components/Footer';
+import WelcomeModal from './components/WelcomeModal';
 
 // Import pages
 import MapPage from './pages/map';
@@ -17,6 +18,7 @@ import TakeActionPage from './pages/take-action';
 import NewsPage from './pages/News/news';
 import BlogPage from './pages/Blog/blog';
 import BlogPost from './pages/Blog/blog-post';
+import GuideMePage from './pages/guide';
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
           <Route path="/" element={
             <>
               <Hero />
+              <WelcomeModal />
               <HowItWorks />
               <MapPlaceholder />
               <Hero2 />
@@ -43,6 +46,7 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/guide" element={<GuideMePage />} />
         </Routes>
         <Footer />
       </div>

@@ -115,92 +115,114 @@ const MapPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <MapContainer
-        center={[20.5937, 78.9629]} // Center on India
-        zoom={5}
-        style={{ height: '100vh', width: '100%' }}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
+    <div className="container mx-auto px-4 py-8 min-h-screen bg-gray-50">
+      <div className="mb-6">
+        <h1 className="text-4xl font-bold text-green-800 mb-4 text-center">India's Forest Loss Map</h1>
+        <div className="bg-red-50 p-4 rounded-lg text-center">
+          <h2 className="text-2xl font-bold text-green-700 mb-2">Combating Deforestation one Day at a time</h2>
+        </div>
+      </div>
+      
+      <div className="relative h-[800px] w-full rounded-lg overflow-hidden bg-gray-100 mb-5">
+        <MapContainer
+          center={[20.5937, 78.9629]} // Center on India
+          zoom={5}
+          style={{ 
+            height: '100%', 
+            width: '100%',
+            margin: '0 20px',
+            position: 'relative',
+            zIndex: 1
+          }}
+          maxZoom={12}
+          minZoom={4}
+          className="rounded-lg shadow-lg"
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
 
-        {/* Forest loss circles with color gradient */}
-        {forestLossData.map((region, index) => (
-          <Circle
-            key={index}
-            center={[region.lat, region.lng]}
-            pathOptions={{
-              color: getColor(region.loss),
-              fillColor: getColor(region.loss),
-              fillOpacity: 0.7,
-              weight: 3,
-              dashArray: '5, 5'
-            }}
-            radius={getCircleRadius(region.loss)}
-            eventHandlers={{
-              click: () => setSelectedRegion(region)
-            }}
-          >
-            <Popup>
-              <div className="bg-white p-4 rounded-lg shadow-lg">
-                <h3 className="font-bold text-xl mb-2 text-red-800">Forest Loss Alert</h3>
-                <div className="flex items-center">
-                  <span className="font-semibold">Current Prediction:</span>
-                  <span className="ml-2">{region.currentPrediction * 100}%</span>
+          {/* Forest loss circles with color gradient */}
+          {forestLossData.map((region, index) => (
+            <Circle
+              key={index}
+              center={[region.lat, region.lng]}
+              pathOptions={{
+                color: getColor(region.loss),
+                fillColor: getColor(region.loss),
+                fillOpacity: 0.7,
+                weight: 3,
+                dashArray: '5, 5'
+              }}
+              radius={getCircleRadius(region.loss)}
+              eventHandlers={{
+                click: () => setSelectedRegion(region)
+              }}
+            >
+              <Popup>
+                <div className="bg-white p-4 rounded-lg shadow-lg">
+                  <h3 className="font-bold text-xl mb-2 text-red-800">Forest Loss Alert</h3>
+                  <div className="flex items-center">
+                    <span className="font-semibold">Current Prediction:</span>
+                    <span className="ml-2">{region.currentPrediction * 100}%</span>
+                  </div>
+                  <div className="flex items-center mt-2">
+                    <span className="font-semibold">Previous Prediction:</span>
+                    <span className="ml-2">{region.previousPrediction * 100}%</span>
+                  </div>
+                  <div className="flex items-center mt-2">
+                    <span className="font-semibold">Loss:</span>
+                    <span className="ml-2">{region.loss * 100}%</span>
+                  </div>
                 </div>
-                <div className="flex items-center mt-2">
-                  <span className="font-semibold">Previous Prediction:</span>
-                  <span className="ml-2">{region.previousPrediction * 100}%</span>
-                </div>
-                <div className="flex items-center mt-2">
-                  <span className="font-semibold">Loss:</span>
-                  <span className="ml-2">{region.loss * 100}%</span>
-                </div>
-              </div>
-            </Popup>
-          </Circle>
-        ))}
+              </Popup>
+            </Circle>
+          ))}
 
-        {/* Selected region info panel */}
-        {selectedRegion && (
-          <div className="fixed bottom-4 right-4 bg-white p-6 rounded-lg shadow-lg z-50 w-96">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-green-800">Forest Loss Details</h2>
-              <button
-                onClick={() => setSelectedRegion(null)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                ×
-              </button>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-semibold text-red-800">Location</h4>
-                <p className="text-lg font-bold">{selectedRegion.name}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-red-800">Forest Loss</h4>
-                <p className="text-2xl font-bold">{selectedRegion.loss * 100}%</p>
-              </div>
-            </div>
-            <div className="mt-4">
-              <h4 className="font-semibold text-red-800">Predictions</h4>
-              <div className="mt-2">
-                <div className="flex items-center">
-                  <span className="font-semibold">Current:</span>
-                  <span className="ml-2">{selectedRegion.currentPrediction * 100}%</span>
+          {/* Selected region info panel */}
+          {selectedRegion && (
+            <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg p-6 max-w-md w-full shadow-2xl">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-3xl font-bold text-red-800">Forest Loss Details</h2>
+                  <button 
+                    onClick={() => setSelectedRegion(null)}
+                    className="text-gray-500 hover:text-gray-700 text-2xl"
+                  >
+                    ×
+                  </button>
                 </div>
-                <div className="flex items-center mt-2">
-                  <span className="font-semibold">Previous:</span>
-                  <span className="ml-2">{selectedRegion.previousPrediction * 100}%</span>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <h4 className="font-semibold text-red-800">Location</h4>
+                      <p className="text-lg font-bold">{selectedRegion.name}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-red-800">Forest Loss</h4>
+                      <p className="text-2xl font-bold">{selectedRegion.loss * 100}%</p>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-red-800">Predictions</h4>
+                    <div className="mt-2">
+                      <div className="flex items-center">
+                        <span className="font-semibold">Current:</span>
+                        <span className="ml-2">{selectedRegion.currentPrediction * 100}%</span>
+                      </div>
+                      <div className="flex items-center mt-2">
+                        <span className="font-semibold">Previous:</span>
+                        <span className="ml-2">{selectedRegion.previousPrediction * 100}%</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-      </MapContainer>
+          )}
+        </MapContainer>
+      </div>
     </div>
   );
 };

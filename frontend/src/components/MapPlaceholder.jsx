@@ -10,8 +10,7 @@ const Map = () => {
         </h2>
         <p className="text-center text-gray-600 mb-12">
           Live Map – Powered by Global Forest Intelligence
-        </p>
-        <div className="w-full">
+        </p>        <div className="w-full">
           <MapPage />
         </div>
       </div>
