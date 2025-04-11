@@ -44,7 +44,7 @@ def predict_tf():
         print("\nStarting prediction...")  # Debug log
         
         # Use a local image
-        image_path = 'canopy_img.png'
+        image_path = 'deset.png'
         print(f"Looking for image at: {image_path}")  # Debug log
         
         # Check if image exists and get its absolute path
@@ -64,7 +64,7 @@ def predict_tf():
 
         # Save to Firebase
         try:
-            ref = db.reference('p1_results')
+            ref = db.reference('predictions')
             push_result = ref.push(result_dict)
             print(f"Saved to Firebase with key: {push_result.key}")  # Debug log
             firebase_status = 'success'
@@ -76,7 +76,7 @@ def predict_tf():
         response = {
             'prediction': result_dict.get('prediction'),
             'coordinates': result_dict.get('coordinates'),
-            'firebase_status': 'success',
+            'firebase_status': firebase_status,
             'timestamp': result_dict.get('timestamp')
         }
 

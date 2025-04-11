@@ -1,32 +1,65 @@
 from ultralytics import YOLO
+import cv2
+import base64
+import json
+import time
 
 class Model2:
     def __init__(self):
-        self.model_path = 'yolov8n.pt'# Placeholder for YOLO model
+        self.model = None
 
     def load_model(self):
-        # Load Pretrained YOLOv8 Model
-        self.model = YOLO(self.model_path)
+        try:
+            self.model = YOLO('yolov8n.pt')  # Using YOLOv8 nano for faster inference
+            return True
+        except Exception as e:
+            print(f"Error loading YOLO model: {str(e)}")
+            return False
 
     def generate_response(self, image_path, save_output=False):
-        # Perform Object Detection
-        results = self.model(image_path)
+        try:
+            # Load and process image
+            image = cv2.imread(image_path)
+            if image is None:
+                return None
 
-        # Show the image with detected objects
-        results[0].show()
-
-        # Optional: Save output image
-        if save_output:
-            results[0].save(filename='output.jpg')
-            print("Output image saved as output.jpg")
-
-# Usage
-# if __name__ == "__main__":
-#     model_path = 'yolov8n.pt'  # or yolov8s.pt, yolov8m.pt, etc.
-
-#     obj = YoloModel(model_path)
-#     obj.load_model()
-
-#     # Pass any image for detection
-#     obj.generate_response('canopy_img.png', save_output=True)
-
+            # Run inference
+            results = self.model(image)
+            
+            # Get detections
+            detections = results[0].boxes
+            
+            # Check if any detections were found
+            if len(detections) > 0:
+                # Get the first detection (most confident)
+                box = detections[0].xyxy[0].cpu().numpy()
+                confidence = detections[0].conf[0].cpu().numpy()
+                
+                # Calculate center coordinates
+                x_center = (box[0] + box[2]) / 2
+                y_center = (box[1] + box[3]) / 2
+                
+                # Convert image to base64 for storage
+                _, buffer = cv2.imencode('.jpg', image)
+                image_base64 = base64.b64encode(buffer).decode('utf-8')
+                
+                # Prepare response
+                return {
+                    'found': True,
+                    'coordinates': {
+                        'x': float(x_center),
+                        'y': float(y_center)
+                    },
+                    'confidence': float(confidence),
+                    'image': image_base64,
+                    'timestamp': int(time.time())
+                }
+            else:
+                return {
+                    'found': False,
+                    'timestamp': int(time.time())
+                }
+                
+        except Exception as e:
+            print(f"Error in YOLO prediction: {str(e)}")
+            return None
