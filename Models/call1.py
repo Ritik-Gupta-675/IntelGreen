@@ -1,5 +1,6 @@
 from tensorflow.keras.utils import load_img, img_to_array
 import tensorflow as tf
+import random
 import json
 import time
 
@@ -30,8 +31,8 @@ class Model1:
             prediction_value = float(1 - prediction[0][0])
 
             # Generate random coordinates (to be replaced with actual coordinates)
-            x = 71 # Example: scale prediction to coordinate
-            y = 29  # Example: inverse scale
+            x = random.randint(80,90) # Example: scale prediction to coordinate
+            y = random.randint(25,30)  # Example: inverse scale
 
             # Prepare response
             result = {
