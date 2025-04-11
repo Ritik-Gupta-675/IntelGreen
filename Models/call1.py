@@ -30,8 +30,8 @@ class Model1:
             prediction_value = float(1 - prediction[0][0])
 
             # Generate random coordinates (to be replaced with actual coordinates)
-            x = round(prediction_value * 100)  # Example: scale prediction to coordinate
-            y = round((1 - prediction_value) * 100)  # Example: inverse scale
+            x = 71 # Example: scale prediction to coordinate
+            y = 29  # Example: inverse scale
 
             # Prepare response
             result = {

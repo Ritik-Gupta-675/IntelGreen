@@ -23,3 +23,17 @@ const db = getFirestore(app);
 const rtdb = getDatabase(app);
 
 export { app, db, rtdb };
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyC5k7Izr58mJyjqmGbxJ5f4BaFapxvGEG4",
+//   authDomain: "intelligreen-e5bd8.firebaseapp.com",
+//   projectId: "intelligreen-e5bd8",
+//   storageBucket: "intelligreen-e5bd8.firebasestorage.app",
+//   messagingSenderId: "247365550558",
+//   appId: "1:247365550558:web:edc30e73a79dcb558d9d4f",
+//   measurementId: "G-LYX4Z8PTEG"
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
